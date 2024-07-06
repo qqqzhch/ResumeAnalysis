@@ -2,12 +2,14 @@ import { createSlice ,PayloadAction} from "@reduxjs/toolkit";
 
 type initialStateType={
     resume:string
-    isloading:boolean
+    isloading:boolean,
+    key:string
 }
 
 const initialState:initialStateType = {
     resume: '',
-    isloading:false
+    isloading:false,
+    key:""
 };
 
 export const resumeSlice = createSlice({
@@ -20,6 +22,10 @@ export const resumeSlice = createSlice({
         },
         setIsloading:(state:initialStateType,action:PayloadAction<boolean>)=>{
             state.isloading=action.payload
+        },
+        setKey:(state:initialStateType,action:PayloadAction<string>)=>{
+            state.key=action.payload
+
         }
         
     },
