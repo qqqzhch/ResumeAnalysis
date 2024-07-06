@@ -24,11 +24,11 @@ export const resumeSlice = createSlice({
             state.isloading=action.payload
         },
         setKey:(state:initialStateType,action:PayloadAction<string>)=>{
-            state.key=action.payload
+            state.key=action.payload 
 
         }
         
     },
 })
 
-export const { setData ,setIsloading} = resumeSlice.actions;
+export const { setData ,setIsloading,setKey} = resumeSlice.actions;

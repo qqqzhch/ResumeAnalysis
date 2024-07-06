@@ -4,11 +4,11 @@ import { If, Else } from "react-if";
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 
-import Fileupload from "@/component/Fileupload";
-import Loading from "@/component/Loading";
-import AnalyzeResults from '@/component/AnalyzeResults'
-import CustomerDemand from '@/component/CustomerDemand'
-
+import Fileupload from "@/components/ui/component/Fileupload";
+import Loading from "@/components/ui/component/Loading";
+import AnalyzeResults from '@/components/ui/component/AnalyzeResults'
+import CustomerDemand from '@/components/ui/component/CustomerDemand'
+import { Button } from "@/components/ui/button"
 
 export default function Home() {
   
@@ -19,6 +19,9 @@ export default function Home() {
 
   return (
     <main className="p-2">
+       <div>
+      <Button>Click me</Button>
+    </div>
       {/*拖拽文件 */}
       <Fileupload></Fileupload>
 

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
 import StoreProvider from "@/context/storeProvider";
-import Menu from './menu'
+import { cn } from "@/lib/utils"
+import Mainnav from '@/components/main-nav'
+import Pageheader from '@/components/page-header'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "AI 招聘助手",
@@ -17,22 +19,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
          <StoreProvider>
-          <body className={inter.className}>
+          <body  className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          inter.variable
+        )}>
           
-            <div className="md:flex w-full p-2">
-        {/*菜单*/}
-        <Menu></Menu>
-
-        <div className="p-6 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
-          <div className=" w-full">
-          {children}
-          </div>
-        </div>
+    
+          <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+      <Mainnav></Mainnav>
+      <div className="flex flex-col">
+        <Pageheader></Pageheader>
+        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+        {children}
+        </main>
       </div>
-            
-            </body>
+    </div>
+          </body>
          </StoreProvider>
     </html>
   );
