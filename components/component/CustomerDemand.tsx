@@ -53,25 +53,34 @@ export default function () {
         content: fileconetent,
       },{
         role: "user",
-        content: `客户需求为 ${prompt},根据客户需求分析这份简历。
-        1 列举那些满足客户需求？
-        2 列举出那些不满足客户需求？
-        3 分析这份简历满足客户需求的概率为多少？
-        要求返回格式为markdown,且markdown格式美观漂亮`,
+        content: `1 分析这份简历，判断有多大概率满足客户需求
+        2 例如满足客户60%的需求，哪些需求满足，40%的需求不满足，哪些需求不满足。
+        3 客户需求如下 ${prompt}
+        `,
       }]
 
     const completion = await client.chat.completions.create({
       model: "moonshot-v1-32k",
       messages: historyList,
+      stream: true,
     });
-    return completion.choices[0].message.content;
+    return completion;
   }
 
   const btnclick=useCallback(async ()=>{
    console.log('---')
    const res= await  chat(demand,data)
    if(res){
-    setresMD(res)
+    
+    for await (const chunk of res) {
+      console.log(chunk.choices[0].delta.content);
+      if(chunk.choices[0].delta.content!==undefined&&chunk.choices[0].delta.content!=null){
+        setresMD((prevstate)=>{
+         return  prevstate+=chunk.choices[0].delta.content
+        })
+      }
+      
+    }
    }
    
 

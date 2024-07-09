@@ -37,7 +37,7 @@ export default function Home() {
   <Tabs defaultValue="account" className=" w-full">
   <TabsList>
     <TabsTrigger value="account">分析结果</TabsTrigger>
-    <TabsTrigger value="password">客户需求配置分析</TabsTrigger>
+    <TabsTrigger value="password">客户需求匹配分析</TabsTrigger>
   </TabsList>
   <TabsContent value="account">
   <AnalyzeResults></AnalyzeResults>

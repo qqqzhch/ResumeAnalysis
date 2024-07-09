@@ -77,8 +77,15 @@ export default function Fileupload() {
     let reply = await chat(msg);
     
     dispatch(setIsloading(false))
-    dispatch(setData(reply as string))
-    console.log(reply);
+    for await (const chunk of reply) {
+      console.log(chunk.choices[0].delta.content);
+      if(chunk.choices[0].delta.content!==undefined&&chunk.choices[0].delta.content!==null){
+        dispatch(setData(chunk.choices[0].delta.content as string))
+      }
+      
+    }
+    
+    
   }
 
   async function getFileContent(file: File) {
@@ -109,9 +116,9 @@ export default function Fileupload() {
     const completion = await client.chat.completions.create({
       model: "moonshot-v1-32k",
       messages: history,
+      stream: true
     });
-    history = history.concat(completion.choices[0].message);
-    return completion.choices[0].message.content;
+    return completion
   }
 
 

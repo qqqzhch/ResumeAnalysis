@@ -17,11 +17,14 @@ export const resumeSlice = createSlice({
     initialState,
     reducers: {
         setData: (state:initialStateType,action:PayloadAction<string>) => {
-            state.resume = action.payload;
+            state.resume += action.payload;
             console.log('set resume = ', state.resume)
         },
         setIsloading:(state:initialStateType,action:PayloadAction<boolean>)=>{
             state.isloading=action.payload
+            if(action.payload){
+                state.resume
+            }
         },
         setKey:(state:initialStateType,action:PayloadAction<string>)=>{
             state.key=action.payload 
