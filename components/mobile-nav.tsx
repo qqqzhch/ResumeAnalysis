@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import Link from "next/link"
 import {
@@ -32,8 +33,12 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { usePathname } from 'next/navigation'
 
 const mobileNav = () => {
+  const pathname = usePathname()
+  console.log(pathname)
+
     return (
         <div>
             <nav className="grid gap-2 text-lg font-medium">
@@ -46,14 +51,14 @@ const mobileNav = () => {
                 </Link>
                 <Link
                   href="/"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 bg-muted text-foreground  hover:text-foreground"
+                  className={`mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 ${pathname==="/"? "bg-muted text-foreground":"text-muted-foreground"}  hover:text-foreground`}
                 >
                   <Home className="h-5 w-5" />
                   简历分析
                 </Link>
                 <Link
                   href="/demandanalysis"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl  px-3 py-2  text-muted-foreground hover:text-foreground"
+                  className={`mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 ${pathname==="/demandanalysis"? "bg-muted text-foreground":"text-muted-foreground"}  hover:text-foreground`}
                 >
                   <ShoppingCart className="h-5 w-5" />
                   招聘需求分析
@@ -63,21 +68,21 @@ const mobileNav = () => {
                 </Link>
                 <Link
                   href="/seting"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                  className={`mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 ${pathname==="/seting"? "bg-muted text-foreground":"text-muted-foreground"}  hover:text-foreground`}
                 >
                   <Package className="h-5 w-5" />
                   设置AI key
                 </Link>
                 <Link
                   href="/about"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                  className={`mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 ${pathname==="/about"? "bg-muted text-foreground":"text-muted-foreground"}  hover:text-foreground`}
                 >
                   <Users className="h-5 w-5" />
                   关于我们
                 </Link>
                 <Link
                   href="/feedback"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                  className={`mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 ${pathname==="/feedback"? "bg-muted text-foreground":"text-muted-foreground"}  hover:text-foreground`}
                 >
                   <LineChart className="h-5 w-5" />
                   反馈
