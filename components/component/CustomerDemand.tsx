@@ -6,6 +6,8 @@ import { useCallback, useEffect, useState,useMemo } from "react";
 import localforage from "localforage";
 import markdownit from "markdown-it";
 import { If, Else, Then } from "react-if";
+import type {ChatCompletionUserMessageParam} from '@/chatype'
+
 
 
 const md = markdownit();
@@ -24,7 +26,7 @@ const client = new OpenAI({
     },
   ];
 
-export default function () {
+export default function CustomerDemand () {
     const { key } = useAppSelector((state) => state.resume);
     const [data,setData]=useState<string>('')
     const [demand,setDemand]=useState<string>('')
@@ -61,7 +63,7 @@ export default function () {
 
     const completion = await client.chat.completions.create({
       model: "moonshot-v1-32k",
-      messages: historyList,
+      messages: historyList as Array<ChatCompletionUserMessageParam>,
       stream: true,
     });
     return completion;

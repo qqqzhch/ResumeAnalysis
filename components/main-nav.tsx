@@ -35,7 +35,7 @@ import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { usePathname } from 'next/navigation'
 
-const mainnav = () => {
+const Mainnav:React.FC = () => {
   const pathname = usePathname()
   console.log(pathname)
   
@@ -114,4 +114,4 @@ const mainnav = () => {
     );
 };
 
-export default mainnav;
+export default Mainnav;

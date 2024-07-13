@@ -35,7 +35,7 @@ import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { usePathname } from 'next/navigation'
 
-const mobileNav = () => {
+const MobileNav:React.FC = () => {
   const pathname = usePathname()
   console.log(pathname)
 
@@ -108,4 +108,4 @@ const mobileNav = () => {
     );
 };
 
-export default mobileNav;
+export default MobileNav;

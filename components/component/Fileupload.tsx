@@ -5,7 +5,7 @@ import OpenAI from "openai";
 import localforage from "localforage";
 import Image from 'next/image';
 import { ArrowUpTrayIcon } from '@heroicons/react/24/solid'
-
+import type {ChatCompletionUserMessageParam} from '@/chatype'
 
 
 const client = new OpenAI({
@@ -27,18 +27,18 @@ export default function Fileupload() {
   
   const dispatch = useAppDispatch()
 
-      // 拖拽进入时的事件处理
-  const handleDragOver = (e: Event) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
+  //     // 拖拽进入时的事件处理
+  // const handleDragOver = (e: Event) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  // };
 
-  // 拖拽离开时的事件处理
-  const handleDragLeave = (e: Event) => {
-    e.preventDefault();
-    e.stopPropagation();
-    console.log(e);
-  };
+  // // 拖拽离开时的事件处理
+  // const handleDragLeave = (e: Event) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   console.log(e);
+  // };
 
   // 放置文件时的事件处理
   const handleDrop = (event: any) => {
@@ -95,10 +95,9 @@ export default function Fileupload() {
     if (value) {
       return value;
     }
-    let file_object = await client.files.create({
-      file: file,
-      purpose: "file-extract",
-    });
+    //@ts-ignore
+    let file_object = await client.files.create({file: file,purpose: "file-extract"});
+    
     let file_content = await (
       await client.files.content(file_object.id)
     ).text();
@@ -115,7 +114,7 @@ export default function Fileupload() {
     });
     const completion = await client.chat.completions.create({
       model: "moonshot-v1-32k",
-      messages: history,
+      messages: history  as Array<ChatCompletionUserMessageParam>,
       stream: true
     });
     return completion
@@ -128,9 +127,9 @@ export default function Fileupload() {
         {/*拖拽文件 */}
         <label
               onDrop={handleDrop}
-              onDragOver={handleDragOver}
-              onDragLeave={handleDragLeave}
-              for="dropzone-file"
+              // onDragOver={handleDragOver}
+              // onDragLeave={handleDragLeave}
+              htmlFor="dropzone-file"
               className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
             >
               <div className="flex flex-col  items-center justify-center pt-5 pb-6">
