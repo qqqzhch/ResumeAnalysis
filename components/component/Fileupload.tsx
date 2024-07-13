@@ -27,18 +27,18 @@ export default function Fileupload() {
   
   const dispatch = useAppDispatch()
 
-  //     // 拖拽进入时的事件处理
-  // const handleDragOver = (e: Event) => {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  // };
+      // 拖拽进入时的事件处理
+  const handleDragOver = (e:any) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
 
-  // // 拖拽离开时的事件处理
-  // const handleDragLeave = (e: Event) => {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   console.log(e);
-  // };
+  // 拖拽离开时的事件处理
+  const handleDragLeave = (e:any) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(e);
+  };
 
   // 放置文件时的事件处理
   const handleDrop = (event: any) => {
@@ -127,8 +127,8 @@ export default function Fileupload() {
         {/*拖拽文件 */}
         <label
               onDrop={handleDrop}
-              // onDragOver={handleDragOver}
-              // onDragLeave={handleDragLeave}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
               htmlFor="dropzone-file"
               className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
             >
