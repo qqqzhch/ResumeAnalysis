@@ -78,7 +78,7 @@ const MobileNav:React.FC = () => {
                   className={`mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 ${pathname==="/about"? "bg-muted text-foreground":"text-muted-foreground"}  hover:text-foreground`}
                 >
                   <Users className="h-5 w-5" />
-                  关于我们
+                  关于玄秘
                 </Link>
                 <Link
                   href="/feedback"
