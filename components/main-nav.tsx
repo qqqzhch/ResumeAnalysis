@@ -45,7 +45,7 @@ const Mainnav:React.FC = () => {
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link href="/" className="flex items-center gap-2 font-semibold">
               <Package2 className="h-6 w-6" />
-              <span className="">AI招聘助手</span>
+              <span className="">玄秘AI</span>
             </Link>
             {/* <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
               <Bell className="h-4 w-4" />
@@ -83,7 +83,7 @@ const Mainnav:React.FC = () => {
                 className={`flex items-center gap-3 rounded-lg ${pathname=="/about"?"bg-muted text-primary":"text-muted-foreground" }  px-3 py-2   transition-all hover:text-primary`}
               >
                 <Users className="h-4 w-4" />
-                关于我们
+                关于玄秘
               </Link>
               <Link
                 href="/feedback"

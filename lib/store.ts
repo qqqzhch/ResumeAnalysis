@@ -4,10 +4,12 @@ import logger from "redux-logger";
 import {configureStore, combineReducers} from '@reduxjs/toolkit'
 import {homeSlice} from "@/lib/slices/homeSlice";
 import {resumeSlice} from "@/lib/slices/resumeSlice";
+import { aiConfigSlice} from "@/lib/slices/aiConfigSlice";
 
 const rootReducer = combineReducers({
     [homeSlice.name]: homeSlice.reducer,
-    [resumeSlice.name]: resumeSlice.reducer
+    [resumeSlice.name]: resumeSlice.reducer,
+    [aiConfigSlice.name]:aiConfigSlice.reducer
 })
 
 export const makeStore = () => {
